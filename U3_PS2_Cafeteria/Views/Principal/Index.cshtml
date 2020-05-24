@@ -1,0 +1,76 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>Mi Cafetería - Inicio</title>
+    <!-- Favicon-->
+    <link rel="icon" type="image/x-icon" href="assets/img/favicon.ico" />
+    <!-- Font Awesome icons (free version)-->
+    <script src="https://use.fontawesome.com/releases/v5.13.0/js/all.js" crossorigin="anonymous"></script>
+    <!-- Google fonts-->
+    <link href="https://fonts.googleapis.com/css?family=Merriweather+Sans:400,700" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic" rel="stylesheet" type="text/css" />
+    <!-- Third party plugin CSS-->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.min.css" rel="stylesheet" />
+    <!-- Core theme CSS (includes Bootstrap)-->
+    <link href="~/Content/styles.css" rel="stylesheet" />
+</head>
+
+<body>
+    <header>
+        <div class="text-center">
+            <div class="card" style="background-image:url(../../Content/img/Interfaz/Coffee_Beans.jpg)">
+                <div class="my-lg-5 text-white">
+                    <h1 style="text-shadow: 0 2px 3px rgba(0,0,0,.8);">INICIO</h1>
+                    <h4 style="text-shadow: 0 2px 3px rgba(0,0,0,.8);">Bienvenido</h4>
+                </div>
+            </div>
+            <div class="py-3"></div>
+        </div>
+    </header>
+
+    <div class="row justify-content-center">
+        <div class="py-4">
+            <div class="card mx-3" align="center" style="width: 30rem;">
+                <img src="~/Content/img/Interfaz/Coffee_Cinnamon.jpg" class="card-img-top" alt="Imagen No Encontrada">
+                <div class="card-body">
+                    <div class="my-2"></div>
+                    <a href="@Url.Action("Index","Products")" class="btn btn-success btn-lg">MENÚ</a>
+                </div>
+            </div>
+        </div>
+        <div class="py-4">
+            <div class="card mx-3" align="center" style="width: 30rem;">
+                <img src="~/Content/img/Interfaz/Kermit_Chalkboard.jpg" class="card-img-top" alt="Imagen No Encontrada">
+                <div class="card-body">
+                    <div class="my-2"></div>
+                    <a href="@Url.Action("Index","Orders")" class="btn btn-success btn-lg">ORDENES</a>
+                </div>
+            </div>
+        </div>
+        <div class="py-4">
+            <div class="card mx-3" align="center" style="width: 30rem;">
+                <img src="~/Content/img/Interfaz/Girl_Cellphone.jpg" class="card-img-top" alt="Imagen No Encontrada">
+                <div class="card-body">
+                    <div class="my-2"></div>
+                    <a href="@Url.Action("About","Home")" class="btn btn-success btn-lg">ACERCA DE</a>
+                </div>
+            </div>
+        </div>
+        <div class="py-4">
+            <div class="card mx-3" align="center" style="width: 30rem;">
+                <img src="~/Content/img/Interfaz/Man_Work.jpg" class="card-img-top" alt="Imagen No Encontrada">
+                <div class="card-body">
+                    <div class="my-2"></div>
+                    <a href="@Url.Action("Contact","Home")" class="btn btn-success btn-lg">CONTACTO</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>

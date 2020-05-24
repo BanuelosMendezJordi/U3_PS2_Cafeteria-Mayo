@@ -1,0 +1,91 @@
+﻿@model U3_PS2_Cafeteria.Models.Product
+
+@{
+    ViewBag.Title = "Details";
+}
+
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>Mi Cafetería - Inicio</title>
+        <!-- Favicon-->
+        <link rel="icon" type="image/x-icon" href="assets/img/favicon.ico" />
+        <!-- Font Awesome icons (free version)-->
+        <script src="https://use.fontawesome.com/releases/v5.13.0/js/all.js" crossorigin="anonymous"></script>
+        <!-- Google fonts-->
+        <link href="https://fonts.googleapis.com/css?family=Merriweather+Sans:400,700" rel="stylesheet" />
+        <link href="https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic" rel="stylesheet" type="text/css" />
+        <!-- Third party plugin CSS-->
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.min.css" rel="stylesheet" />
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link href="~/Content/styles.css" rel="stylesheet" />
+    </head>
+
+    <body>
+        <header>
+            <div class="text-center container">
+                @if (User.Identity.IsAuthenticated)
+                {
+                    <div class="py-2"></div>
+                }
+                else
+                {
+                    <!-- Navigation-->
+                    <nav class="navbar navbar-expand-lg navbar-light bg-dark fixed-top py-3" id="mainNav">
+                        <div class="container">
+                            <a class="navbar-brand js-scroll-trigger" href="@Url.Action("Index","Home")"><i class="fas fa-coffee text-white-75" style="font-size:25px; margin-right:10px;"></i>CAFETERÍA</a><button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+                            <div class="collapse navbar-collapse" id="navbarResponsive">
+                                <ul class="navbar-nav ml-auto my-2 my-lg-0">
+                                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="@Url.Action("Index","Products")">Menú</a></li>
+                                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="@Url.Action("Create","Orders")">Ordenar</a></li>
+                                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="@Url.Action("About","Home")">Acerca de</a></li>
+                                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="@Url.Action("Contact", "Home")">Contacto</a></li>
+                                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="@Url.Action("Login", "Account")">Iniciar Sesión</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </nav>
+                    <div class="py-lg-5"></div>
+                }
+                <div class="card" style="background-image:url(../../Content/img/Interfaz/Coffee_Cinnamon.jpg)">
+
+                    <div class="my-lg-5 text-white">
+                        <h1 style="text-shadow: 0 2px 3px rgba(0,0,0,.8);">DETALLES</h1>
+                        <h4 style="text-shadow: 0 2px 3px rgba(0,0,0,.8);">Consulta información adicional del producto</h4>
+                        @if (User.Identity.IsAuthenticated)
+                        {
+                            <div>
+                                <a href="@Url.Action("Index", "Products")" class="btn btn-dark">Regresar</a>
+                                @Html.ActionLink("Editar", "Edit", new { id = Model.ProductId }, new { @class = "btn btn-info" })
+                                @Html.ActionLink("Eliminar", "Delete", new { id = Model.ProductId }, new { @class = "btn btn-danger" })
+
+                            </div>
+                        }
+                        else
+                        {
+                            <a href="@Url.Action("Index", "Products")" class="btn btn-warning">Regresar</a>
+                        }
+                    </div>
+                </div>
+            </div>
+        </header>
+        <div class="my-4"></div>
+        <div class="container justify-content-center">
+            <div class="card mb-3 " style="width:1100px;">
+                <div class="row no-gutters">
+                    <div class="col-md-8">
+                        <div class="card-body">
+                            <h2 class="card-title" style="font-weight:bold;">@Html.DisplayFor(model => model.ProductName)</h2>
+                            <h4 class="card-text">@Html.DisplayFor(model => model.ProductDescription)</h4>
+                            <h4 class="card-text"><i class="fas fa-dollar-sign"></i>@Html.DisplayFor(model => model.ProductPrice)</h4>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <img src="@Url.Action("getImage","Products", new { id=Model.ProductId})" class="card-img" alt="Imagen No Encontrada">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>

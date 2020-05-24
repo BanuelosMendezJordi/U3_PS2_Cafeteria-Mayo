@@ -1,0 +1,87 @@
+﻿@model IEnumerable<U3_PS2_Cafeteria.Models.Product>
+
+@{
+    ViewBag.Title = "Menú";
+}
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>Mi Cafetería - Inicio</title>
+    <!-- Favicon-->
+    <link rel="icon" type="image/x-icon" href="assets/img/favicon.ico" />
+    <!-- Font Awesome icons (free version)-->
+    <script src="https://use.fontawesome.com/releases/v5.13.0/js/all.js" crossorigin="anonymous"></script>
+    <!-- Google fonts-->
+    <link href="https://fonts.googleapis.com/css?family=Merriweather+Sans:400,700" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic" rel="stylesheet" type="text/css" />
+    <!-- Third party plugin CSS-->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.min.css" rel="stylesheet" />
+    <!-- Core theme CSS (includes Bootstrap)-->
+    <link href="~/Content/styles.css" rel="stylesheet" />
+</head>
+
+<body>
+    <header>
+        <div class="text-center container">
+            @if (User.Identity.IsAuthenticated)
+            { 
+                <div class="py-2"></div>
+            }
+            else
+            {
+                <!-- Navigation-->
+                <nav class="navbar navbar-expand-lg navbar-light bg-dark fixed-top py-3" id="mainNav">
+                    <div class="container">
+                        <a class="navbar-brand js-scroll-trigger" href="@Url.Action("Index","Home")"><i class="fas fa-coffee text-white-75" style="font-size:25px; margin-right:10px;"></i>CAFETERÍA</a><button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+                        <div class="collapse navbar-collapse" id="navbarResponsive">
+                            <ul class="navbar-nav ml-auto my-2 my-lg-0">
+                                <li class="nav-item"><a class="nav-link js-scroll-trigger" href="@Url.Action("Index","Products")">Menú</a></li>
+                                <li class="nav-item"><a class="nav-link js-scroll-trigger" href="@Url.Action("Create","Orders")">Ordenar</a></li>
+                                <li class="nav-item"><a class="nav-link js-scroll-trigger" href="@Url.Action("About","Home")">Acerca de</a></li>
+                                <li class="nav-item"><a class="nav-link js-scroll-trigger" href="@Url.Action("Contact", "Home")">Contacto</a></li>
+                                <li class="nav-item"><a class="nav-link js-scroll-trigger" href="@Url.Action("Login", "Account")">Iniciar Sesión</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </nav>
+                <div class="py-lg-5"></div>
+            }
+            <div class="card" style="background-image:url(../../Content/img/Interfaz/Coffee_Cinnamon.jpg)">
+
+                <div class="my-lg-5 text-white">
+                    <h1 style="text-shadow: 0 2px 3px rgba(0,0,0,.8);">MENÚ</h1>
+                    <h4 style="text-shadow: 0 2px 3px rgba(0,0,0,.8);">Explora los diferentes alimentos y bebidas que preparamos</h4>
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        <a class="btn btn-outline-warning" href="@Url.Action("Create","Products")">Añadir Producto</a>
+                    }
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="row justify-content-center">
+        @foreach (var item in Model)
+        {
+            <div class="py-4">
+                <div class="card mx-3" align="center" style="width: 16rem; ">
+                    <img src="@Url.Action("getImage","Products", new { id=item.ProductId})" class="card-img-top" alt="Imagen No Encontrada">
+                    <div class="card-body">
+                        <p style="font-size:large; font-weight:bold" class="text-left my-0">@Html.DisplayFor(modelItem => item.ProductName)</p>
+                        <p style="font-size:large; font-weight:bold" class="text-left my-0"><i class="fas fa-dollar-sign"></i>@Html.DisplayFor(modelItem => item.ProductPrice)</p>
+                        <a href="@Url.Action("Details","Products", new { id=item.ProductId})" class="btn btn-success float-right">Detalles</a>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</body>
+
+
+
+
+<!-- Core theme JS-->
+<script src="~/Scripts/scripts.js"></script>
